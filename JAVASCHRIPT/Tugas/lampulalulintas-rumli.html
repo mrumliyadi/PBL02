@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- //TUGAS
+    //1. Buat dalam 1 or 2 file (html / js) untuk membuat aplikasi kecil mengenai input BOM (Browser Object Model) -> method prompt () dan outputnya menggunakan DOM (Document Object Model) untuk membuat lampu lalu lintas. 
+    //2. Bila input data adalah merah, meka outputnya adalah kendaraan berhenti. Jika input data adalah kuning, maka outputnya adalah kendaraan Berhati-hati. selain itu, input adalah hlijau maka outputnya adalah kendaraan berjalan. -->
+    <script>
+        // let input = prompt("Masukkan Warna Lampu Lalu Lintas : *");
+        // if (input == "Merah") {document.write("Kendaraan Berhenti");}
+        // else if (input == "Kuning"){document.write("Kendaraan Berhati-hati");}
+        // else if (input == "Hijau") {document.write("Kendaraan Berjalan");}
+        // else {document.write("Inputan Salah, Silahkan Masukkan Warna Merah, Kuning, atau Hijau");}
+        // let Warna = prompt ("Masukkan Warna Lampu (Merah, Kuning, Hijau) :").toLowerCase(); // Merah, mERAH, MERAH, MERAh --> merah <> toUpperCase() --> mengubah semua huruf menjadi huruf besar
+        // let pesan = "";
+
+        // if (Warna === "merah"){// diuji data dan tipe datanya 
+        //     pesan = "Berhenti";
+        // } else if (Warna === "kuning") {
+        //     pesan = "Berhati-hati";
+        // } else if (Warna === "hijau") {
+        //     pesan = "Berjalan";
+        // } else {
+        //     pesan = "menepi ke pinggir jalan";
+        // }
+        
+        // document.write("<h2> Anda Sedang Melihat Lampu "+ Warna +", Sebaiknya Kendaraan Anda " + pesan + "</h2>");
+        let Nama, Jenis_Kelamin, Status, Keterangan;
+        //display form 1 (Nama)
+        Nama = prompt("Masukkan Nama Anda :");
+        //display form 2 (Jenis Kelamin)
+        Jenis_Kelamin = prompt("Masukkan Jenis Kelamin (Laki-laki atau Perempuan) :").toUpperCase();
+        //display form 3 (Status)
+        Status = prompt ("Masukkan Status Pernikahan Anda (Sendiri, Kawin atau Cerai) :").toUpperCase();
+         //display form 4 (Keterangan)
+        
+        if (Jenis_Kelamin === "LAKI-LAKI") {
+            if (Status === "SENDIRI")
+                Keterangan = "Perjaka";
+            else if (Status === "KAWIN")
+                Keterangan = "MENIKAH";
+            else if (Status === "CERAI")
+                Keterangan = "DUDA";}
+            
+        else if (Jenis_Kelamin === "PEREMPUAN") {
+            if (Status === "SENDIRI")
+                Keterangan = "PERAWAN";
+            else if (Status === "KAWIN")
+                Keterangan = "MENIKAH";
+            else if (Status === "CERAI")
+                Keterangan = "JANDA";}
+            
+        document.write ("Nama : " + Nama + "<br>");
+        document.write ("Jenis Kelamin : " + Jenis_Kelamin + "<br>");
+        document.write ("Status : " + Status + "<br>");
+        document.write ("Keterangan : " + Keterangan + "<br>");
+    </script>
+</body>
+</html>
