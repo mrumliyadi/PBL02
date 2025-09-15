@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengisian Data Pegawai</title>
+</head>
+<body>
+  <h1>Pengisian Data Pegawai</h1>
+
+  <!-- Input -->
+  <label for="nama">Nama:</label>
+  <input type="text" id="nama" placeholder="Masukkan Nama"><br><br>
+
+  <label for="nip">NIP:</label>
+  <input type="text" id="nip" placeholder="Masukkan NIP" maxlength="18"><br><br>
+
+  <button onclick="prosesData()">Proses</button>
+
+  <h3>Hasil:</h3>
+  <p id="hasil"></p>
+
+  <script>
+    function prosesData() {
+      let nama = document.getElementById("nama").value;
+      let nip = document.getElementById("nip").value;
+
+      // Validasi panjang NIP minimal 18 digit
+      if (nip.length < 18 || isNaN(nip)) {
+        document.getElementById("hasil").innerText = "NIP harus terdiri dari 18 digit angka!";
+        return;
+      }
+
+      // Ambil bagian NIP
+      let tglLahir = nip.substring(0, 8);   // 8 digit pertama
+      let tglAsn = nip.substring(8, 14);    // 6 digit selanjutnya
+      let jk = nip.substring(14, 15);       // 1 digit berikutnya
+      let noUrut = nip.substring(15, 18);   // 3 digit terakhir
+
+      // Format tanggal lahir → yyyyMMdd jadi "hari, dd bulan yyyy"
+      let tahun = parseInt(tglLahir.substring(0, 4));
+      let bulan = parseInt(tglLahir.substring(4, 6)) - 1; // bulan dimulai dari 0 di JS
+      let tanggal = parseInt(tglLahir.substring(6, 8));
+
+      let tanggalObj = new Date(tahun, bulan, tanggal);
+
+      // Nama hari dalam bahasa Indonesia
+      let hari = ["minggu", "senin", "selasa", "rabu", "kamis", "jumat", "sabtu"];
+      // Nama bulan dalam bahasa Indonesia
+      let bulanIndo = [
+        "januari", "februari", "maret", "april", "mei", "juni",
+        "juli", "agustus", "september", "oktober", "november", "desember"
+      ];
+
+      let tanggalLahirFormat = 
+        hari[tanggalObj.getDay()] + ", " +
+        tanggalObj.getDate() + " " +
+        bulanIndo[tanggalObj.getMonth()] + " " +
+        tanggalObj.getFullYear();
+
+      // Jenis kelamin
+      let jenisKelamin = (jk === "1") ? "Pria" : (jk === "2") ? "Wanita" : "Tidak diketahui";
+
+      // Hasil akhir
+      let hasil = `
+        <strong>Nama:</strong> ${nama}<br>
+        <strong>NIP:</strong> ${nip}<br>
+        <strong>Tanggal Lahir:</strong> ${tanggalLahirFormat}<br>
+        <strong>Tanggal ASN:</strong> ${tglAsn}<br>
+        <strong>Jenis Kelamin:</strong> ${jenisKelamin}<br>
+        <strong>Nomor Urut:</strong> ${noUrut}
+      `;
+
+      document.getElementById("hasil").innerHTML = hasil;
+    }
+  </script>
+</body>
+</html>
